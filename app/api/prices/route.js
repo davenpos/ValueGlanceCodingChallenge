@@ -1,6 +1,7 @@
-export async function GET() {
-  const symbol = 'IBM';
-  const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`;
+export async function GET(req) {
+  const { searchParams } = new URL(req.url);
+  const apiSymbol = searchParams.get('symbol');
+  const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${apiSymbol}&interval=5min&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`;
 
   const res = await fetch(url, {
     headers: { 'User-Agent': 'request' },
@@ -18,5 +19,5 @@ export async function GET() {
   const changePercent =
     latestPrice && prevPrice ? (((latestPrice - prevPrice) / prevPrice) * 100).toFixed(2) : null;
 
-  return new Response(JSON.stringify({ symbol, latestPrice, changePercent, prices }));
+  return new Response(JSON.stringify({ apiSymbol, latestPrice, changePercent, prices }));
 }
