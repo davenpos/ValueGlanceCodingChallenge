@@ -1,3 +1,5 @@
+import Main from '@/components/Main';
+
 export default function Page() {
-  return <p className="text-center">Hello World!</p>;
+  return <Main />;
 }
