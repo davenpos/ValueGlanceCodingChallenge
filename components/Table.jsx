@@ -5,7 +5,7 @@ export default function Table() {
   const prices = useContext(PricesContext);
 
   return (
-    <table className="w-xl text-left border-collapse m-auto border-1 border-white text-shadow-sm border-">
+    <table className="w-full md:w-xl text-left border-collapse m-auto border-1 border-white text-shadow-sm text-sm md:text-base">
       <thead>
         <tr>
           <th className="border-1 border-white px-1">Symbol</th>

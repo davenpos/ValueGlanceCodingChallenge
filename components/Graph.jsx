@@ -8,13 +8,27 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { PricesContext } from './Main';
 
 Chart.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
 export default function Graph() {
   const prices = useContext(PricesContext);
+
+  const [size, setSize] = useState(9);
+
+  useEffect(() => {
+    function updateSize() {
+      if (window.innerWidth >= 768) setSize(12);
+      else setSize(9);
+    }
+
+    updateSize();
+
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
 
   const chartData = {
     labels: prices.labels,
@@ -47,6 +61,9 @@ export default function Graph() {
         },
         ticks: {
           color: 'white',
+          font: {
+            size,
+          },
         },
       },
       y: {
@@ -55,13 +72,16 @@ export default function Graph() {
         },
         ticks: {
           color: 'white',
+          font: {
+            size,
+          },
         },
       },
     },
   };
 
   return (
-    <div className="h-[500px] w-full py-2">
+    <div className="h-[300px] md:h-[500px] w-full py-2">
       <Line data={chartData} options={options} />
     </div>
   );
