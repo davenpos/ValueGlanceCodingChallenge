@@ -42,14 +42,8 @@ export default function Graph() {
   };
 
   return (
-    <>
-      {prices ? (
-        <div>
-          <Line data={chartData} options={options} />
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </>
+    <div>
+      <Line data={chartData} options={options} />
+    </div>
   );
 }
