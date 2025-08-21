@@ -34,7 +34,6 @@ export default function Graph() {
     labels: prices.labels,
     datasets: [
       {
-        label: 'IBM Stock Price',
         data: prices.data,
         fill: false,
         borderColor: 'oklch(79.2% 0.209 151.711)',
