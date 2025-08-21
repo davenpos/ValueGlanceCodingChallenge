@@ -1,3 +1,3 @@
 export default function Page() {
-  return <p>Hello World!</p>;
+  return <p className="text-center">Hello World!</p>;
 }
