@@ -23,7 +23,7 @@ export default function Graph() {
         label: 'IBM Stock Price',
         data: prices.data,
         fill: false,
-        borderColor: 'rgb(75, 192, 192)',
+        borderColor: 'oklch(79.2% 0.209 151.711)',
         tension: 0.1,
       },
     ],
@@ -31,6 +31,7 @@ export default function Graph() {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,
@@ -39,10 +40,28 @@ export default function Graph() {
         display: false,
       },
     },
+    scales: {
+      x: {
+        grid: {
+          color: 'white',
+        },
+        ticks: {
+          color: 'white',
+        },
+      },
+      y: {
+        grid: {
+          color: 'white',
+        },
+        ticks: {
+          color: 'white',
+        },
+      },
+    },
   };
 
   return (
-    <div>
+    <div className="h-[500px] w-full py-2">
       <Line data={chartData} options={options} />
     </div>
   );

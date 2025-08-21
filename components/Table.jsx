@@ -5,19 +5,19 @@ export default function Table() {
   const prices = useContext(PricesContext);
 
   return (
-    <table>
+    <table className="w-xl text-left border-collapse m-auto border-1 border-white text-shadow-sm">
       <thead>
         <tr>
-          <th>Symbol</th>
-          <th>Price</th>
-          <th>Change %</th>
+          <th className="border-1 border-white px-1">Symbol</th>
+          <th className="border-1 border-white px-1">Price</th>
+          <th className="border-1 border-white px-1">Change %</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>{prices.symbol}</td>
-          <td>{prices.latestPrice}</td>
-          <td>{prices.changePercent}</td>
+          <td className="border-1 border-white px-1">{prices.symbol}</td>
+          <td className="border-1 border-white px-1">${prices.latestPrice.toFixed(2)}</td>
+          <td className="border-1 border-white px-1">{prices.changePercent}</td>
         </tr>
       </tbody>
     </table>

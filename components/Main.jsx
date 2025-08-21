@@ -20,10 +20,6 @@ export default function Main() {
     })();
   }, []);
 
-  useEffect(() => console.log(prices), [prices]);
-
-  //m-auto border-x-16 border-[#f3f3f3] border-t-[#3498db] rounded-[50%] w-[120px] h-[120px]
-
   return (
     <PricesContext.Provider value={prices}>
       {JSON.stringify(prices) === '{}' ? (
