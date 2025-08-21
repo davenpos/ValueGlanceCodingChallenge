@@ -11,11 +11,11 @@ export default function Main() {
   useEffect(() => {
     (async function fetchPrices() {
       const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/prices`);
-      const { prices } = await res.json();
-      const timeSeries = prices['Time Series (5min)'] || {};
+      const { symbol, latestPrice, changePercent, prices: rawPrices } = await res.json();
+      const timeSeries = rawPrices['Time Series (5min)'] || {};
       const labels = Object.keys(timeSeries).sort();
       const data = labels.map((timestamp) => parseFloat(timeSeries[timestamp]['4. close']));
-      setPrices({ labels, data });
+      setPrices({ symbol, latestPrice, changePercent, labels, data });
     })();
   }, []);
 

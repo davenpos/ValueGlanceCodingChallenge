@@ -1,18 +1,31 @@
+import { useContext } from 'react';
+import { PricesContext } from './Main';
+
 export default function Table() {
+  const prices = useContext(PricesContext);
+
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Header 1</th>
-          <th>Header 2</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Data 1</td>
-          <td>Data 2</td>
-        </tr>
-      </tbody>
-    </table>
+    <>
+      {prices ? (
+        <table>
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Price</th>
+              <th>Change %</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{prices.symbol}</td>
+              <td>{prices.latestPrice}</td>
+              <td>{prices.changePercent}</td>
+            </tr>
+          </tbody>
+        </table>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </>
   );
 }
